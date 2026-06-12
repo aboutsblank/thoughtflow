@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 from typing import Any
 
-from datamodels import AppSettings, Element, Scope
+from thoughtflow.dom import AppSettings, Element, Scope
 
 # APP_NAME <category> (-l|-g) "..."
 # workflow idea -g "Das ist eine globale Idee"
@@ -21,7 +21,7 @@ from datamodels import AppSettings, Element, Scope
 
 
 # GLOBALS
-APP_NAME: str = "workflow"
+APP_NAME: str = "thoughtflow"
 AUTHOR: str = "aboutsblank"
 
 settings: AppSettings
@@ -136,23 +136,4 @@ def searchAll() -> Path:
     raise NotImplementedError()
 
 
-if __name__ == "__main__":
 
-    settings, element = initApp()
-
-    path = getLocalPath()
-
-    if settings.scope == Scope.GLOBAL:
-        path = getGlobalPath()
-
-    path = path / ".{}".format(APP_NAME)
-    if not Path.exists(path):
-        os.mkdir(path)
-
-    path = path / "{}".format(settings.usecase)
-
-    # test if exists and writable
-    # if yes open in append mode otherwise error
-    with path.open(mode="a+") as file:
-        serialized = serialize(element)
-        file.write("{}\n".format(serialized))

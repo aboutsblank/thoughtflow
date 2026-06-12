@@ -1,6 +1,6 @@
-import pytest
+# import pytest
 
-import workflow
+from thoughtflow import cli
 
 # end to end test cases are also needed
 
@@ -8,7 +8,7 @@ import workflow
 def test_checkConfigCorrectness1():
     args = {"local": 1, "global": True}
 
-    isCorrectConfig, error = workflow.checkConfigCorrectness(args)
+    isCorrectConfig, error = cli.checkConfigCorrectness(args)
 
     assert not isCorrectConfig
 
@@ -16,7 +16,7 @@ def test_checkConfigCorrectness1():
 def test_checkConfigCorrectness2():
     args = {"local": 0, "global": False}
 
-    isCorrectConfig, error = workflow.checkConfigCorrectness(args)
+    isCorrectConfig, error = cli.checkConfigCorrectness(args)
 
     assert isCorrectConfig
 
@@ -24,7 +24,7 @@ def test_checkConfigCorrectness2():
 def test_checkConfigCorrectness3():
     args = {"local": 1, "global": False}
 
-    isCorrectConfig, error = workflow.checkConfigCorrectness(args)
+    isCorrectConfig, error = cli.checkConfigCorrectness(args)
 
     assert isCorrectConfig
 
@@ -32,10 +32,10 @@ def test_checkConfigCorrectness3():
 def test_checkConfigCorrectness4():
     args = {"local": 0, "global": True}
 
-    isCorrectConfig, error = workflow.checkConfigCorrectness(args)
+    isCorrectConfig, error = cli.checkConfigCorrectness(args)
 
     assert isCorrectConfig
 
 
 def test_searchOnlyLocal():
-    workflow.getLocalPath(2)
+    cli.getLocalPath(2)

@@ -6,7 +6,8 @@ import json
 import os
 from pathlib import Path
 from typing import Any
-from datamodels import AppSettings, Element, Scope, Usecase
+
+from datamodels import AppSettings, Element, Scope
 
 # APP_NAME <category> (-l|-g) "..."
 # workflow idea -g "Das ist eine globale Idee"
@@ -25,12 +26,6 @@ AUTHOR: str = "aboutsblank"
 
 settings: AppSettings
 element: Element
-
-
-class NoFileInScopeError(Exception):
-    "Raised when no file could be found in the scope."
-
-    pass
 
 
 @functools.singledispatch
@@ -65,7 +60,7 @@ def initParser() -> argparse.ArgumentParser:
     # on/off flag option arguments
     parser.add_argument(
         "-l", "--local", action="store_true"
-    )  # -l1, -l2... recursive depth to search upto
+    )
     parser.add_argument(
         "-g", "--global", action="store_true"
     )  # global is reserverd in python
@@ -76,7 +71,7 @@ def initParser() -> argparse.ArgumentParser:
 
 def parseArgs(parser: argparse.ArgumentParser) -> dict:
 
-    # possible program exit
+    # possible program exit in parse_args()
     args: dict = vars(parser.parse_args())
 
     isCorrectConfig: bool = True

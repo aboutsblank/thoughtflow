@@ -1,4 +1,13 @@
 [project]
 
 name = "thoughtflow"
+description = "Tools to optimize (my|your) thought workflow."
 version = "0.1.0"
+license = "MIT"
+readme= "README.md"
+authors = [
+    {name = "aboutsblank", email = "dev@aboutsblank.eu"}
+]
+maintainers = [
+    {name = "aboutsblank", email = "dev@aboutsblank.eu"}
+]

@@ -1,0 +1,9 @@
+[settings]
+
+usecases = [
+    "IDEA",
+    "TASK",
+    "FEATURE",
+    "PROBLEM",
+    
+]

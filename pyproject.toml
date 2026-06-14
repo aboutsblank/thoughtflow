@@ -11,3 +11,6 @@ authors = [
 maintainers = [
     {name = "aboutsblank", email = "dev@aboutsblank.eu"}
 ]
+
+[project.scripts]
+thoughtflow = "thoughtflow.cli:main"

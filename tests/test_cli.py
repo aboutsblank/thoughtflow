@@ -1,6 +1,5 @@
-# import pytest
-
-from thoughtflow import cli
+import thoughtflow.cli as cli
+import pytest
 
 # end to end test cases are also needed
 

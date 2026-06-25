@@ -19,7 +19,11 @@ def main():
 
     path: Path = identify_date_path(args["date"])
 
-    subprocess.run(["micro", path])
+    editor = os.getenv("EDITOR", "micro")
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    
+    subprocess.run([editor, str(path)])
 
 
 def identify_date_path(arg: str) -> Path:

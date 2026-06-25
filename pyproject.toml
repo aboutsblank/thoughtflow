@@ -17,6 +17,9 @@ maintainers = [
     {name = "aboutsblank", email = "dev@aboutsblank.eu"}
 ]
 
+[project.scripts]
+daily = "thoughtflow.daily:main"
+
 [dependency-groups]
 dev = [
     "mypy>=2.1.0",

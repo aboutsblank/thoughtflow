@@ -11,6 +11,7 @@ Tools to help me with the human-computer interaction.
 
 ### Categories
 
+- DAILY
 - FEATURE
 - IDEA
 - PROBLEM
@@ -20,15 +21,39 @@ Tools to help me with the human-computer interaction.
 
 ```bash
 <category> [OPTIONS] (STDIN|micro|<text>)
+```
 
+#### `idea`
+
+```
 # should save "Quick Idea" to respective scope
 idea (-l|-g) "Quick Idea"
 
 # should open preferred text editor and on save / quit append the input to respective scope
 idea (-l|-g)
+```
 
+#### `problem`
+
+```
 # -p | --project
 problem -p="THESIS" "Bug bzgl Laden der Daten"
+```
+
+#### `daily`
+
+```bash
+
+# opens the current daily note ($VAULT/<YYYY-MM-DD>.md)
+daily
+
+# opens the specified daily note ($VAULT/<YYYY-MM-DD>.md)
+daily <YYYY-MM-DD>
+daily (yesterday|today|tomorrow)
+daily (-i|0|+i)
+
+alias dy=daily
+
 ```
 
 ## Dev Guide

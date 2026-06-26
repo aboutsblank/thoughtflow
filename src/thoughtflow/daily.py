@@ -14,7 +14,7 @@ def main():
     parser = argparse.ArgumentParser(prog="daily")
 
     # positional arguments
-    parser.add_argument("date")
+    parser.add_argument("date", default=0)
     args: dict = vars(parser.parse_args())
 
     path: Path = identify_date_path(args["date"])

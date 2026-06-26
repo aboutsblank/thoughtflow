@@ -1,9 +1,9 @@
+import argparse
+import datetime as dt
+import os
 import re
 import subprocess
-import datetime as dt
 from pathlib import Path
-import os
-import argparse
 
 
 class ConfigError(RuntimeError):
@@ -22,7 +22,7 @@ def main():
     editor = os.getenv("EDITOR", "micro")
 
     path.parent.mkdir(parents=True, exist_ok=True)
-    
+
     subprocess.run([editor, str(path)])
 
 
@@ -33,7 +33,7 @@ def identify_date_path(arg: str) -> Path:
         ConfigError: if $VAULT is unset.
     """
 
-    vault_env: str = os.getenv("VAULT")
+    vault_env: (str | None) = os.getenv("VAULT")
 
     if vault_env is None:
         raise ConfigError(
@@ -56,12 +56,13 @@ def parse_date(arg: str, today: dt.date) -> dt.date:
     if re.match(re_date, arg):
         goal_date = dt.date.strptime(arg, "%Y-%m-%d")
     elif re.match(re_number, arg):
-        delta = dt.timedelta(days = int(arg)) # casting int to support "+1"
+        delta = dt.timedelta(days=int(arg))  # casting int to support "+1"
         goal_date = today + delta
     else:
         raise ValueError(f"Invalied / Malformed / Unsupported argument: {arg}")
 
     return goal_date
+
 
 if __name__ == "__main__":
     main()

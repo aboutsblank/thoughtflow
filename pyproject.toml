@@ -30,3 +30,6 @@ dev = [
 [tool.pytest]
 addopts = ["--import-mode=importlib"]
 testpaths = ["tests"]
+
+[tool.mypy]
+check_untyped_defs = true
